@@ -5,7 +5,6 @@ import * as xml2js from 'xml2js';
 import * as ini from 'ini';
 import { VirtualFolder } from './EIDETypeDefine';
 import { VirtualSource, AbstractProject } from './EIDEProject';
-import { isArray } from 'util';
 import { ArrayDelRepetition } from '../lib/node-utility/Utility';
 import { File } from '../lib/node-utility/File';
 import { GlobalEvent } from './GlobalEvents';
@@ -223,11 +222,11 @@ function parseTarget(proj: IarProjectInfo, configNodes: any) {
             });
             // builder action
             if (settingName == 'BUILDACTION') {
-                if (isArray(dataNode.prebuild)) {
+                if (Array.isArray(dataNode.prebuild)) {
                     nTarget.builderActions.prebuild =
                         formatEnvNameAndPathSep(dataNode.prebuild[0], true);
                 }
-                if (isArray(dataNode.postbuild)) {
+                if (Array.isArray(dataNode.postbuild)) {
                     nTarget.builderActions.postbuild =
                         formatEnvNameAndPathSep(dataNode.postbuild[0], true);
                 }
@@ -314,7 +313,7 @@ function isValidEnvName(name: string): boolean {
 
 function toArray(obj: any): any[] {
     if (obj == undefined || obj == null) return [];
-    if (isArray(obj)) return obj;
+    if (Array.isArray(obj)) return obj;
     return [obj];
 }
 

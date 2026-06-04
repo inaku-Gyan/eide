@@ -131,7 +131,6 @@ import {
     SourceFileConfigurationItem, WorkspaceBrowseConfiguration
 } from 'vscode-cpptools';
 import * as eclipseParser from './EclipseProjectParser';
-import { isArray } from 'util';
 import {
     parseIarCompilerLog, 
     CompilerDiagnostics, parseGccCompilerLog, parseArmccCompilerLog, 
@@ -2160,7 +2159,7 @@ class ProjectDataProvider implements vscode.TreeDataProvider<ProjTreeItem>, vsco
                 // copy string options
 
                 const optToString = (obj: string | string[]): string => {
-                    if (isArray(obj)) {
+                    if (Array.isArray(obj)) {
                         return obj[0];
                     } else {
                         return obj;
