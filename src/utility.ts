@@ -38,7 +38,6 @@ import { GitFileInfo } from './WebInterface/GithubInterface';
 import * as platform from './Platform';
 import { SevenZipper } from './Compress';
 import { ResManager } from './ResManager';
-import { isArray } from 'util';
 import { ExeCmd } from '../lib/node-utility/Executable';
 import { GlobalEvent } from './GlobalEvents';
 import { SettingManager } from './SettingManager';
@@ -669,7 +668,7 @@ export function newFileTooltipString(f: File | FileTooltipInfo, root?: File): vs
 
 export function toArray(obj: any): any[] {
     if (obj == undefined || obj == null) return [];
-    if (isArray(obj)) return obj;
+    if (Array.isArray(obj)) return obj;
     return [obj];
 }
 

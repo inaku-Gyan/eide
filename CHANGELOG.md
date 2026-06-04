@@ -6,6 +6,13 @@ All notable version changes will be recorded in this file.
 
 ***
 
+### [v3.27.2] revision
+
+**Fix**:
+  - `Runtime compatibility`: Fixed NodeJS API deprecations (`DEP0051` and `DEP0044`). [Issue 542 543 544](https://github.com/github0null/eide/issues/542)
+
+***
+
 ### [v3.27.0] update
 
 **New**:

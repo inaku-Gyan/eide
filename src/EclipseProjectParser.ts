@@ -4,7 +4,6 @@ import * as os from 'os';
 import * as xml2js from 'xml2js';
 import { VirtualFolder } from './EIDETypeDefine';
 import { VirtualSource, AbstractProject } from './EIDEProject';
-import { isArray } from 'util';
 import { ArrayDelRepetition } from '../lib/node-utility/Utility';
 import { File } from '../lib/node-utility/File';
 import { GlobalEvent } from './GlobalEvents';
@@ -483,7 +482,7 @@ export async function parseEclipseProject(cprojectPath: string): Promise<Eclipse
 
         for (const key in target.builldArgs) {
             const obj: any = target.builldArgs;
-            if (isArray(obj[key])) {
+            if (Array.isArray(obj[key])) {
                 obj[key] = ArrayDelRepetition(obj[key]);
             }
         }
@@ -508,10 +507,10 @@ function parseToolOption(optionObj: any, prjtype: EclipseProjectType): { type: s
 
     const makeResult = (value: string | string[], typ?: string): { type: string, val: string[] } | undefined => {
         if (value == '') return undefined;
-        if (isArray(value) && value.length == 0) return undefined;
+        if (Array.isArray(value) && value.length == 0) return undefined;
         return {
             type: typ || VALUE_TYPE || '',
-            val: isArray(value) ? value : [value]
+            val: Array.isArray(value) ? value : [value]
         };
     };
 
@@ -792,7 +791,7 @@ function parseToolOption(optionObj: any, prjtype: EclipseProjectType): { type: s
 
 function toArray(obj: any): any[] {
     if (obj == undefined || obj == null) return [];
-    if (!isArray(obj)) return [obj];
+    if (!Array.isArray(obj)) return [obj];
     return obj;
 }
 
